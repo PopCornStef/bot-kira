@@ -1,0 +1,17 @@
+{
+    "udpPort": "19999",
+    "udpPortAuto": "19998",
+    "token": "ODE4NTQzMzk2ODQ2NDM2MzYy.YEZl8Q.bJgJsNTXnkaqlk2Adj_-O5_SWOs",
+    "defaultAdminRole": "Admin",
+    "commandPrefix": "!",
+    "databaseFile": "./db/data.db",
+    "serverTimeout": 2,
+    "embedColor": "#ff0000",
+    "serverInfoPingInterval": 20,
+    "failIcon": ":no_entry:",
+    "passIcon": ":white_check_mark:",
+    "autoQueryInterval": 30,
+    "bAutoQueryMessagesOnly": true,
+    "bDisplayNotEnabledMessage": true,
+    "maxServersPerBlock": 10
+}
