@@ -1,8 +1,8 @@
 {
     "udpPort": "19999",
     "udpPortAuto": "19998",
-    "token": "ODE4NTQzMzk2ODQ2NDM2MzYy.YEZl8Q.bJgJsNTXnkaqlk2Adj_-O5_SWOs",
-    "defaultAdminRole": "Admin",
+    "token": "YourToken",
+    "defaultAdminRole": "YourAdminRole",
     "commandPrefix": "!",
     "databaseFile": "./db/data.db",
     "serverTimeout": 2,
