@@ -4,7 +4,7 @@
   "description": "A Discord bot that can communicate with Unreal Tournament 99 servers and display their responses.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "ut",
@@ -16,6 +16,7 @@
     "ut"
   ],
   "author": "Stef M.",
+  "license": "IUSC",
   "dependencies": {
     "country-list": "^2.2.0",
     "discord.js": "^12.5.1",
