@@ -2,7 +2,7 @@
     "udpPort": "19999",
     "udpPortAuto": "19998",
     "token": "YourToken",
-    "defaultAdminRole": "YourAdminRole",
+    "defaultAdminRole": "BOTAdm",
     "commandPrefix": "!",
     "databaseFile": "./db/data.db",
     "serverTimeout": 2,
