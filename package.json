@@ -16,6 +16,7 @@
     "ut"
   ],
   "author": "Stef M.",
+  "license": "IUSC",
   "dependencies": {
     "country-list": "^2.2.0",
     "discord.js": "^12.5.1",
