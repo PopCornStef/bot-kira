@@ -63,8 +63,9 @@ class Bot{
                 this.checkCommand(message);
             }
         });
-
-        this.client.login(config.token);
+  
+        // this.client.login(config.token); // for local use
+        this.client.login(process.env.HTOKEN); // for HEROKU hosting
     }
 
     async checkCommand(message){
