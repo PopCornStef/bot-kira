@@ -64,8 +64,8 @@ class Bot{
             }
         });
   
-        // this.client.login(config.token); // for local use
-        this.client.login(process.env.HTOKEN); // for HEROKU hosting
+        this.client.login(config.token); // for local use
+        // this.client.login(process.env.HTOKEN); // for HEROKU hosting
     }
 
     async checkCommand(message){
