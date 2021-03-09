@@ -196,7 +196,7 @@ class Bot{
 
         const icon = `:small_orange_diamond:`;
 
-        let string = `${icon+icon+icon} **Help - {MOS}\\*KIRA\\* Discord Bot** ${icon+icon+icon}\n\n`;
+        let string = `${icon+icon+icon} **Help for [BOT]Kira Discord Bot** ${icon+icon+icon}\n\n`;
 
         string += `${icon+icon} **User Commands** ${icon+icon}\n`;
 
@@ -247,7 +247,7 @@ class Bot{
 
         const icon = `:small_orange_diamond:`;
 
-        let string = ` ${icon+icon+icon} **Admin help - {MOS}\\*KIRA\\* Discord Bot** ${icon+icon+icon}\n\n`;        
+        let string = ` ${icon+icon+icon} **Admin help for [BOT]Kira Discord Bot** ${icon+icon+icon}\n\n`;        
         string += `${icon+icon} **Admin Commands** ${icon+icon}\n`;
 
         let c = 0;
