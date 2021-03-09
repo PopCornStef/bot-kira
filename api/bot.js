@@ -32,11 +32,6 @@ class Bot{
 
     createClient(){
 
-        const PORT = process.env.PORT || 3000;
-        this.app.listen(PORT, () => {
-            console.log(`Our app is running on port ${ PORT }`);
-        });
-
         this.client = new Discord.Client({
             messageCacheMaxSize: 1,
             messageCacheLifetime: 10,
