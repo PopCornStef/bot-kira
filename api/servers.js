@@ -307,7 +307,7 @@ class Servers{
 
         try{
 
-            const reg = /^.ip(\d+)$/i;
+            const reg = /^.ip (\d+)$/i;
 
             const result = reg.exec(message.content);
 

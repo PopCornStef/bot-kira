@@ -112,11 +112,12 @@ class Bot{
             if(await this.channels.bBotCanCommentInChannel(message)){
 
                 const helpReg = /^.help$/i;
-                const shortServerQueryReg = /^.q\d+$/i;
+                const helpAdminReg = /^.helpadmin$/i;
+                const shortServerQueryReg = /^.q \d+$/i;
                 const serverQueryReg = /^.q .+$/i;
                 const listReg = /^.servers/i;
                 const activeReg = /^.active/i;
-                const ipReg = /^.ip\d+/i;
+                const ipReg = /^.ip \d+/i;
                 const extendedReg = /^.extended \d+$/i;
                 const altExtendedReg = /^.extended .+$/i;
                 const playersReg = /^.players \d+$/i;
@@ -125,6 +126,10 @@ class Bot{
                 if(helpReg.test(message.content)){
 
                     this.helpCommand(message);
+                
+                }else if(helpAdminReg.test(message.content)){
+                    
+                    this.helpAdminCommand(message);
 
                 }else if(shortServerQueryReg.test(message.content)){
                     
@@ -164,7 +169,6 @@ class Bot{
 
                 }
 
-
             }else{
                 if(config.bDisplayNotEnabledMessage){
                     message.channel.send(`${config.failIcon} The bot is not enabled in this channel.`);
@@ -180,6 +184,42 @@ class Bot{
 
         const p = config.commandPrefix;
 
+        const userCommands = [
+            {"name": `${p}servers`, "content": `Lists all servers added to the database.`},
+            {"name": `${p}active`, "content": `Lists all servers added to the database that have at least one player.`},
+            {"name": `${p}q serverID`, "content": `Query a Unreal Tournament server by just using the server's ID. Use the **${config.commandPrefix}servers** command to find a server's id.`},
+            {"name": `${p}ip serverID`, "content": `Displays the specified server's name with a clickable link.`},
+            {"name": `${p}players serverID`, "content": `Displays extended information about players on the server.`},
+            {"name": `${p}help`, "content": `Shows this help.`}
+        ];
+
+        const icon = `:small_orange_diamond:`;
+
+        let string = `${icon+icon+icon} **Help - {MOS}\\*KIRA\\* Discord Bot** ${icon+icon+icon}\n\n`;
+
+        string += `${icon+icon} **User Commands** ${icon+icon}\n`;
+
+        let c = 0;
+
+        for(let i = 0; i < userCommands.length; i++){
+
+            c = userCommands[i];
+
+            string += `**${c.name}** ${c.content}\n`;
+        }
+        string += `\n${icon+icon} **Special thanks** ${icon+icon}`;
+        string += `\nThanks to **Scott Adkin** for is usefull code source of his DISCORD Bot`;
+        string += `\n:orange_book: **Source Github Repo** <https://github.com/scottadkin/Unreal-Tournament-Server-Query-Discord-Bot>\n`;
+        string += `\nThanks to **Stef M.** for is small modifications for {MOS} Team`;
+        string += `\n:orange_book: **Source Github Repo** <https://github.com/PopCornStef/bot-kira>\n`;
+
+        message.channel.send(string);
+    }
+
+    helpAdminCommand(message){
+
+        const p = config.commandPrefix;
+
         const adminCommands = [
 
             {"name": `${p}allowchannel`, "content": `Enables the bot to be used in the current channel.`},
@@ -192,42 +232,24 @@ class Bot{
             {"name": `${p}removeserver serverID`, "content": `Removes the specified server from the database.`},
             {"name": `${p}setauto`, "content": `Sets the current channel as the auto query and display channel where the posts are updated in regualr intervals with the latest information from the server. :no_entry: Do not enable in an existing channel, non autoquery messages are deleted by default.`},
             {"name": `${p}stopauto`, "content": `Disables autoquery channel from updating.`},
-            {"name": `${p}editserver id type value`, "content": `Edit selected server's value type. Types:**(alias,ip,country,port)**`}
-
+            {"name": `${p}editserver id type value`, "content": `Edit selected server's value type. Types:**(alias,ip,country,port)**`},
+            {"name": `${p}helpadmin`, "content": `Shows this help.`}
+        
         ];
 
         const userCommands = [
-            {"name": `${p}servers`, "content": `Lists all servers added to the database.`},
-            {"name": `${p}active`, "content": `Lists all servers added to the database that have at least one player.`},
-            {"name": `${p}q ip:port`, "content": `Query a Unreal Tournament server, if no port is specified 7777 is used. Domain names can also be used instead of an ip.`},
-            {"name": `${p}q serverID`, "content": `Query a Unreal Tournament server by just using the server's id instead of it's ip and port. Use the ${config.commandPrefix}servers command to find a server's id.`},
-            {"name": `${p}ip serverID`, "content": `Displays the specified server's name with a clickable link.`},
-            {"name": `${p}players serverID`, "content": `Displays extended information about players on the server.`},
-            {"name": `${p}players ip:port`, "content": `Displays extended information about players on the server, domain address also work, if no port specified 7777 is used.`},
             {"name": `${p}extended serverID`, "content": `Displays extended information about the server.`},
-            {"name": `${p}help`, "content": `Shows this command.`}
+            {"name": `${p}players ip:port`, "content": `Displays extended information about players on the server, domain address also work, if no port specified 7777 is used.`},
+            {"name": `${p}q ip:port`, "content": `Query a Unreal Tournament server, if no port is specified 7777 is used. Domain names can also be used instead of an ip.`}
+
         ];
 
         const icon = `:small_orange_diamond:`;
 
-        let string = ` ${icon} ${icon} **Unreal Tournament Server Query Discord Bot Help** ${icon} ${icon}\n\n`;
-
-        string += `${icon+icon} **User Commands** ${icon+icon}\n`;
+        let string = ` ${icon+icon+icon} **Admin help - {MOS}\\*KIRA\\* Discord Bot** ${icon+icon+icon}\n\n`;        
+        string += `${icon+icon} **Admin Commands** ${icon+icon}\n`;
 
         let c = 0;
-
-        for(let i = 0; i < userCommands.length; i++){
-
-            c = userCommands[i];
-
-            string += `**${c.name}** ${c.content}\n`;
-        }
-
-        message.channel.send(string);
-
-        string = "";
-    
-        string += `\n${icon+icon} **Admin Commands** ${icon+icon}\n`;
 
         for(let i = 0; i < adminCommands.length; i++){
 
@@ -236,7 +258,25 @@ class Bot{
             string += `**${c.name}** ${c.content}\n`;
         }
 
-        string += `\n:orange_book: **Github Repo** <https://github.com/scottadkin/Unreal-Tournament-Server-Query-Discord-Bot>`;
+        message.channel.send(string);
+
+        string = "";
+        string += `${icon+icon} **Other User Commands** ${icon+icon}\n`;
+
+        c = 0;
+
+        for(let i = 0; i < userCommands.length; i++){
+
+            c = userCommands[i];
+
+            string += `**${c.name}** ${c.content}\n`;
+        }
+
+        string += `\n${icon+icon} **Special thanks** ${icon+icon}`;
+        string += `\nThanks to **Scott Adkin** for is usefull code source of his DISCORD Bot`;
+        string += `\n:orange_book: **Source Github Repo** <https://github.com/scottadkin/Unreal-Tournament-Server-Query-Discord-Bot>\n`;
+        string += `\nThanks to **Stef M.** for is small modifications for {MOS} Team`;
+        string += `\n:orange_book: **Source Github Repo** <https://github.com/PopCornStef/bot-kira>\n`;
 
         message.channel.send(string);
     }
@@ -347,7 +387,7 @@ class Bot{
 
         try{
 
-            const reg = /^.q(\d+)$/i;
+            const reg = /^.q (\d+)$/i;
 
             const result = reg.exec(message.content);
 
